@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "BYDrawingBoardViewController.h"
 
 @interface ViewController ()
 
@@ -16,7 +17,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     // Do any additional setup after loading the view, typically from a nib.
+}
+- (IBAction)presentToDrawingBoard:(UIButton *)sender {
+    BYDrawingBoardViewController * vc = [[BYDrawingBoardViewController alloc]init];
+    vc.originView = [self.view snapshotViewAfterScreenUpdates:NO];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
